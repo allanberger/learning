@@ -1,7 +1,7 @@
 (ns adventofcode.core
   (:gen-class))
 
+(require '[adventofcode.days.day4 :as day4])
+
 (defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (println "Hello, World!"))
+  (println (day4/part1)))
