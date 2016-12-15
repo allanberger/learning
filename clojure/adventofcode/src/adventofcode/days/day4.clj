@@ -1,34 +1,36 @@
 (ns adventofcode.days.day4
-  (:gen-class)
-  (:require [clojure.string :as str])
-  (:require [clojure.java.io :as io]))
+  (:require [clojure.string :as s]
+            [clojure.java.io :as io]))
 
-(defn rooms []
-  (line-seq (io/reader "././files/day4_input.txt")))
+(defn room-name [room]
+  (subs 0 (- (count room) 11)))
+
+(defn sector-id [room]
+  (let [length (count room)]
+    (subs room (- length 10) (- length 7))))
 
 (defn checksum [room]
   (let [length (count room)]
     (subs room (- length 6) (- length 1))))
 
-(defn compare-item [[k1 v1][k2 v2]]
-  (or (> v1 v2)
-      (if (= v1 v2)
-        (<= (compare k1 k2) 0)
-        false)))
-
-(defn check-real-room [room]
-  (->> (sort compare-item
-             (-> room
-                 (subs 0 (- (count room) 10))
-                 (str/replace "-" "")
-                 (frequencies)))
+(defn calc-checksum [room-name]
+  (->> (s/replace room-name "-" "")
+       (frequencies)
+       (sort-by val)
+       (reverse)
+       (partition-by val)
+       (map #(map first %))
+       (map sort)
+       (flatten)
        (take 5)
-       (keys)))
+       (s/join)))
 
-(defn solution [room]
-    (if (= (set (check-real-room room)) (set (checksum room)))
-      (Integer. (subs room (- (count room) 10) (- (count room) 7)))
-      0))
+(defn sector-value [room]
+  (if (= (checksum room) (calc-checksum (room-name room)))
+    (Integer. (sector-id room))
+    0))
 
-(transduce (map #(do (println (check-real-room %1) (checksum %1) (solution %1)) (solution %1))) + (rooms))
-(reduce + (map solution (rooms)))
+(defn rooms [path]
+  (line-seq (io/reader path)))
+
+(reduce + (map sector-value (rooms "././files/day4_input.txt")))
