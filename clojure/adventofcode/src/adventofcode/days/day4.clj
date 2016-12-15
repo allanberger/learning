@@ -18,11 +18,11 @@
 
 (defn sector-value [room]
   (let [length (count room)]
-    (letfn [(room-name [room] (subs room 0 (- length 11)))
-            (sector-id [room] (subs room (- length 10) (- length 7)))
-            (checksum [room] (subs room (- length 6) (- length 1)))]
-      (if (= (checksum room) (calc-checksum (room-name room)))
-        (Integer. (sector-id room))
+    (letfn [(room-name [] (subs room 0 (- length 11)))
+            (sector-id [] (subs room (- length 10) (- length 7)))
+            (checksum [] (subs room (- length 6) (- length 1)))]
+      (if (= (checksum) (calc-checksum (room-name)))
+        (Integer. (sector-id))
         0))))
 
 (defn rooms [path]
