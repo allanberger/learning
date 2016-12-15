@@ -1,4 +1,4 @@
-(ns advent.4.core
+(ns adventofcode.days.day4
   (:require [clojure.string :as s]
             [clojure.java.io :as io]))
 
