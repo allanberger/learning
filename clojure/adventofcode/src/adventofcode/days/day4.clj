@@ -3,7 +3,7 @@
             [clojure.java.io :as io]))
 
 (defn room-name [room]
-  (subs 0 (- (count room) 11)))
+  (subs room 0 (- (count room) 11)))
 
 (defn sector-id [room]
   (let [length (count room)]
