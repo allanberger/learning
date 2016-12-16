@@ -11,8 +11,7 @@
   (->> (s/replace room-name "-" "")
        (frequencies)
        (sort compare-freq)
-       (flatten)
-       (take-nth 2)
+       (keys)
        (take 5)
        (s/join)))
 
