@@ -11,3 +11,5 @@
        (reverse)
        (ffirst)
        (prn)))
+
+; => \w \k \b \v \m \i \k \b
