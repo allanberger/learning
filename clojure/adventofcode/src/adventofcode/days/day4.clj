@@ -27,4 +27,6 @@
 (defn rooms [path]
   (line-seq (io/reader path)))
 
-(reduce + (map sector-value (rooms "././files/day4_input.txt")))
+(defn part1
+  []
+  (reduce + (map sector-value (rooms "././files/day4_input.txt"))))
