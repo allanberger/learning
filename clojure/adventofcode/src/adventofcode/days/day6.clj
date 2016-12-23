@@ -1,6 +1,5 @@
 (ns adventofcode.days.day6
-  (:require [clojure.string :as str]
-            [clojure.java.io :as io]))
+  (:require [clojure.java.io :as io]))
 
 (defn input [path]
   (line-seq (io/reader path)))
