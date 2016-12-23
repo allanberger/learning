@@ -1,8 +1,8 @@
 (ns adventofcode.core
   (:gen-class))
 
-(require '[adventofcode.days.day1 :as day4])
-(require '[adventofcode.days.day4 :as day6])
+(require '[adventofcode.days.day4 :as day4])
+(require '[adventofcode.days.day6 :as day6])
 
 (defn -main
   "Run all days"
