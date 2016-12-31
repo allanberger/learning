@@ -5,12 +5,6 @@
 (defn input [path]
   (line-seq (io/reader path)))
 
-(def input1 "  541  588  421")
-(def input2 "  827  272  126")
-(def input3 "   39  703  839")
-
-(map vector (input "././files/day3_input.txt"))
-
 ; get greatest number of one row
 (defn greatest
   [entry]
@@ -21,6 +15,7 @@
   [entry]
   (apply + (rest (reverse (sort (map #(Integer/parseInt %) (str/split (str/trim entry) #"\s+")))))))
 
+; comparator returns -1 if it's a valid triangle
 (defn check-valid-triangle
   [entry]
   (compare (greatest entry) (sum entry)))
