@@ -26,3 +26,10 @@
       (count)))
 
 ; => 993
+
+(defn part2
+  []
+  (-> (filter #(= % -1) (map #(check-valid-triangle %) (map #(str/join " " %) (partition 3 (flatten (apply map vector (map #(str/split (str/trim %) #"\s+") (input "././files/day3_input.txt"))))))))
+      (count)))
+
+; => 1849
