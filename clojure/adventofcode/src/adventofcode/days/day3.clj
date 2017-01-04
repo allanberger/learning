@@ -22,14 +22,24 @@
 
 (defn part1
   []
-  (-> (filter #(= % -1) (map #(check-valid-triangle %) (input "././files/day3_input.txt")))
-      (count)))
+  (->> (input "././files/day3_input.txt")
+       (map #(check-valid-triangle %))
+       (filter #(= % -1))
+       (count)))
 
 ; => 993
 
 (defn part2
   []
-  (-> (filter #(= % -1) (map #(check-valid-triangle %) (map #(str/join " " %) (partition 3 (flatten (apply map vector (map #(str/split (str/trim %) #"\s+") (input "././files/day3_input.txt"))))))))
-      (count)))
+  (->> (input "././files/day3_input.txt")
+       (map #(str/trim %))
+       (map #(str/split % #"\s+"))
+       (apply map vector)
+       (flatten)
+       (partition 3)
+       (map #(str/join " " %))
+       (map #(check-valid-triangle %))
+       (filter #(= % -1))
+       (count)))
 
 ; => 1849

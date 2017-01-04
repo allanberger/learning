@@ -9,6 +9,7 @@
   "Run all days"
   [& args]
   (println (day3/part1))
+  (println (day3/part2))
   (println (day4/part1))
   (println (day6/part1))
   (println (day6/part2)))
