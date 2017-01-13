@@ -1,0 +1,243 @@
+2017-01-11 13:25:54,933 [main] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider 
+2017-01-11 13:25:56,906 [main] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 13:25:57,616 [main] INFO  luminus.http-server - starting HTTP server on port 3000 
+2017-01-11 13:25:57,906 [main] INFO  org.xnio - XNIO version 3.3.6.Final 
+2017-01-11 13:25:58,485 [main] INFO  org.projectodd.wunderboss.web.Web - Registered web context / 
+2017-01-11 13:25:58,492 [main] INFO  luminus.repl-server - starting nREPL server on port 7000 
+2017-01-11 13:25:58,558 [main] INFO  fb-bot.core - #'fb-bot.config/env started 
+2017-01-11 13:25:58,560 [main] INFO  fb-bot.core - #'fb-bot.handler/init-app started 
+2017-01-11 13:25:58,561 [main] INFO  fb-bot.core - #'fb-bot.core/http-server started 
+2017-01-11 13:25:58,563 [main] INFO  fb-bot.core - #'fb-bot.core/repl-server started 
+2017-01-11 14:15:13,944 [main] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider 
+2017-01-11 14:15:15,676 [main] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 14:15:16,251 [main] INFO  luminus.http-server - starting HTTP server on port 3000 
+2017-01-11 14:15:16,624 [main] INFO  org.xnio - XNIO version 3.3.6.Final 
+2017-01-11 14:15:17,306 [main] ERROR luminus.http-server - server failed to start on port 3000 
+java.lang.RuntimeException: java.net.BindException: Address already in use
+	at io.undertow.Undertow.start(Undertow.java:186) ~[undertow-core-1.3.23.Final.jar:1.3.23.Final]
+	at org.projectodd.wunderboss.web.undertow.UndertowWeb.start(UndertowWeb.java:83) ~[wunderboss-web-undertow-0.12.2.jar:na]
+	at org.projectodd.wunderboss.web.undertow.UndertowWeb.registerHandler(UndertowWeb.java:143) ~[wunderboss-web-undertow-0.12.2.jar:na]
+	at org.projectodd.wunderboss.web.undertow.UndertowWeb.registerHandler(UndertowWeb.java:124) ~[wunderboss-web-undertow-0.12.2.jar:na]
+	at org.projectodd.wunderboss.web.undertow.UndertowWeb.registerHandler(UndertowWeb.java:68) ~[wunderboss-web-undertow-0.12.2.jar:na]
+	at immutant.web.internal.wunderboss$mount.invokeStatic(wunderboss.clj:79) ~[na:na]
+	at immutant.web.internal.wunderboss$mount.invoke(wunderboss.clj:56) ~[na:na]
+	at immutant.web$run.invokeStatic(web.clj:111) ~[na:na]
+	at immutant.web$run.doInvoke(web.clj:23) ~[na:na]
+	at clojure.lang.RestFn.invoke(RestFn.java:423) [clojure-1.8.0.jar:na]
+	at luminus.http_server$start.invokeStatic(http_server.clj:20) [na:na]
+	at luminus.http_server$start.invoke(http_server.clj:17) [na:na]
+	at fb_bot.core$eval14171$fn__14172.invoke(core.clj:18) [na:na]
+	at mount.core$record_BANG_.invokeStatic(core.cljc:86) [na:na]
+	at mount.core$record_BANG_.invoke(core.cljc:85) [na:na]
+	at mount.core$up$fn__100.invoke(core.cljc:93) [na:na]
+	at mount.core$up.invokeStatic(core.cljc:92) [na:na]
+	at mount.core$up.invoke(core.cljc:90) [na:na]
+	at mount.core$bring.invokeStatic(core.cljc:210) [na:na]
+	at mount.core$bring.invoke(core.cljc:202) [na:na]
+	at mount.core$start.invokeStatic(core.cljc:252) [na:na]
+	at mount.core$start.doInvoke(core.cljc:244) [na:na]
+	at clojure.lang.RestFn.invoke(RestFn.java:397) [clojure-1.8.0.jar:na]
+	at mount.core$start_with_args.invokeStatic(core.cljc:350) [na:na]
+	at mount.core$start_with_args.doInvoke(core.cljc:346) [na:na]
+	at clojure.lang.RestFn.invoke(RestFn.java:410) [clojure-1.8.0.jar:na]
+	at fb_bot.core$start_app.invokeStatic(core.clj:41) [na:na]
+	at fb_bot.core$start_app.invoke(core.clj:40) [na:na]
+	at fb_bot.core$_main.invokeStatic(core.clj:49) [na:na]
+	at fb_bot.core$_main.doInvoke(core.clj:48) [na:na]
+	at clojure.lang.RestFn.invoke(RestFn.java:397) [clojure-1.8.0.jar:na]
+	at clojure.lang.Var.invoke(Var.java:375) [clojure-1.8.0.jar:na]
+	at user$eval14300.invokeStatic(form-init1695096349420839534.clj:1) [na:na]
+	at user$eval14300.invoke(form-init1695096349420839534.clj:1) [na:na]
+	at clojure.lang.Compiler.eval(Compiler.java:6927) [clojure-1.8.0.jar:na]
+	at clojure.lang.Compiler.eval(Compiler.java:6917) [clojure-1.8.0.jar:na]
+	at clojure.lang.Compiler.load(Compiler.java:7379) [clojure-1.8.0.jar:na]
+	at clojure.lang.Compiler.loadFile(Compiler.java:7317) [clojure-1.8.0.jar:na]
+	at clojure.main$load_script.invokeStatic(main.clj:275) [clojure-1.8.0.jar:na]
+	at clojure.main$init_opt.invokeStatic(main.clj:277) [clojure-1.8.0.jar:na]
+	at clojure.main$init_opt.invoke(main.clj:277) [clojure-1.8.0.jar:na]
+	at clojure.main$initialize.invokeStatic(main.clj:308) [clojure-1.8.0.jar:na]
+	at clojure.main$null_opt.invokeStatic(main.clj:342) [clojure-1.8.0.jar:na]
+	at clojure.main$null_opt.invoke(main.clj:339) [clojure-1.8.0.jar:na]
+	at clojure.main$main.invokeStatic(main.clj:421) [clojure-1.8.0.jar:na]
+	at clojure.main$main.doInvoke(main.clj:384) [clojure-1.8.0.jar:na]
+	at clojure.lang.RestFn.invoke(RestFn.java:421) [clojure-1.8.0.jar:na]
+	at clojure.lang.Var.invoke(Var.java:383) [clojure-1.8.0.jar:na]
+	at clojure.lang.AFn.applyToHelper(AFn.java:156) [clojure-1.8.0.jar:na]
+	at clojure.lang.Var.applyTo(Var.java:700) [clojure-1.8.0.jar:na]
+	at clojure.main.main(main.java:37) [clojure-1.8.0.jar:na]
+Caused by: java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method) ~[na:1.8.0_111]
+	at sun.nio.ch.Net.bind(Net.java:433) ~[na:1.8.0_111]
+	at sun.nio.ch.Net.bind(Net.java:425) ~[na:1.8.0_111]
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223) ~[na:1.8.0_111]
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74) ~[na:1.8.0_111]
+	at org.xnio.nio.NioXnioWorker.createTcpConnectionServer(NioXnioWorker.java:190) ~[xnio-nio-3.3.6.Final.jar:3.3.6.Final]
+	at org.xnio.XnioWorker.createStreamConnectionServer(XnioWorker.java:243) ~[xnio-api-3.3.6.Final.jar:3.3.6.Final]
+	at io.undertow.Undertow.start(Undertow.java:142) ~[undertow-core-1.3.23.Final.jar:1.3.23.Final]
+	... 50 common frames omitted
+2017-01-11 14:15:58,712 [Thread-2] INFO  luminus.repl-server - nREPL server stopped 
+2017-01-11 14:15:58,740 [Thread-2] DEBUG org.projectodd.wunderboss.WunderBoss - Returning existing component for org.projectodd.wunderboss.web.Web:-1645144552, ignoring options. 
+2017-01-11 14:15:58,820 [Thread-2] INFO  luminus.http-server - HTTP server stopped 
+2017-01-11 14:15:58,849 [Thread-2] INFO  fb-bot.core - #'fb-bot.core/repl-server stopped 
+2017-01-11 14:15:58,878 [Thread-2] INFO  fb-bot.core - #'fb-bot.core/http-server stopped 
+2017-01-11 14:22:42,327 [main] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider 
+2017-01-11 14:22:44,263 [main] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 14:22:44,846 [main] INFO  luminus.http-server - starting HTTP server on port 3000 
+2017-01-11 14:22:45,234 [main] INFO  org.xnio - XNIO version 3.3.6.Final 
+2017-01-11 14:22:45,975 [main] INFO  org.projectodd.wunderboss.web.Web - Registered web context / 
+2017-01-11 14:22:45,981 [main] INFO  luminus.repl-server - starting nREPL server on port 7000 
+2017-01-11 14:22:46,070 [main] INFO  fb-bot.core - #'fb-bot.config/env started 
+2017-01-11 14:22:46,073 [main] INFO  fb-bot.core - #'fb-bot.handler/init-app started 
+2017-01-11 14:22:46,076 [main] INFO  fb-bot.core - #'fb-bot.core/http-server started 
+2017-01-11 14:22:46,077 [main] INFO  fb-bot.core - #'fb-bot.core/repl-server started 
+2017-01-11 14:34:37,129 [XNIO-1 task-9] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 14:34:37,134 [XNIO-1 task-9] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 14:34:48,764 [XNIO-1 task-10] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 14:34:48,769 [XNIO-1 task-10] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 14:35:33,348 [XNIO-1 task-3] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 14:35:33,356 [XNIO-1 task-3] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 14:35:44,632 [XNIO-1 task-7] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 14:35:44,637 [XNIO-1 task-7] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 14:43:31,589 [XNIO-1 task-5] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 14:43:31,598 [XNIO-1 task-5] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 14:43:31,751 [XNIO-1 task-5] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 14:43:31,757 [XNIO-1 task-5] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 14:43:31,858 [XNIO-1 task-5] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 14:43:31,864 [XNIO-1 task-5] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 14:43:32,610 [XNIO-1 task-5] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 14:43:32,618 [XNIO-1 task-5] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 14:43:33,115 [XNIO-1 task-5] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 14:43:33,117 [XNIO-1 task-5] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 14:43:33,341 [XNIO-1 task-5] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 14:43:33,343 [XNIO-1 task-5] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 15:18:29,945 [Thread-2] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 15:18:29,956 [Thread-2] INFO  fb-bot.core - #'fb-bot.handler/init-app stopped 
+2017-01-11 15:32:29,631 [main] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider 
+2017-01-11 15:32:31,153 [main] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 15:32:31,958 [main] INFO  luminus.http-server - starting HTTP server on port 3000 
+2017-01-11 15:32:32,270 [main] INFO  org.xnio - XNIO version 3.3.6.Final 
+2017-01-11 15:32:32,857 [main] INFO  org.projectodd.wunderboss.web.Web - Registered web context / 
+2017-01-11 15:32:32,863 [main] INFO  luminus.repl-server - starting nREPL server on port 7000 
+2017-01-11 15:32:32,932 [main] INFO  fb-bot.core - #'fb-bot.config/env started 
+2017-01-11 15:32:32,933 [main] INFO  fb-bot.core - #'fb-bot.handler/init-app started 
+2017-01-11 15:32:32,935 [main] INFO  fb-bot.core - #'fb-bot.core/http-server started 
+2017-01-11 15:32:32,936 [main] INFO  fb-bot.core - #'fb-bot.core/repl-server started 
+2017-01-11 15:34:31,569 [XNIO-1 task-12] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 15:34:31,578 [XNIO-1 task-12] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 15:42:21,295 [XNIO-1 task-15] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 15:42:21,304 [XNIO-1 task-15] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 15:42:40,952 [XNIO-1 task-16] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 15:42:40,957 [XNIO-1 task-16] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 15:42:49,353 [XNIO-1 task-1] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 15:42:49,359 [XNIO-1 task-1] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 15:45:20,356 [XNIO-1 task-3] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 15:45:20,364 [XNIO-1 task-3] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 15:45:38,449 [Thread-2] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 15:45:38,455 [Thread-2] INFO  fb-bot.core - #'fb-bot.handler/init-app stopped 
+2017-01-11 15:47:18,512 [main] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider 
+2017-01-11 15:47:20,744 [main] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 15:47:21,238 [main] INFO  luminus.http-server - starting HTTP server on port 3000 
+2017-01-11 15:47:21,554 [main] INFO  org.xnio - XNIO version 3.3.6.Final 
+2017-01-11 15:47:22,148 [main] INFO  org.projectodd.wunderboss.web.Web - Registered web context / 
+2017-01-11 15:47:22,153 [main] INFO  luminus.repl-server - starting nREPL server on port 7000 
+2017-01-11 15:47:22,203 [main] INFO  fb-bot.core - #'fb-bot.config/env started 
+2017-01-11 15:47:22,204 [main] INFO  fb-bot.core - #'fb-bot.handler/init-app started 
+2017-01-11 15:47:22,205 [main] INFO  fb-bot.core - #'fb-bot.core/http-server started 
+2017-01-11 15:47:22,206 [main] INFO  fb-bot.core - #'fb-bot.core/repl-server started 
+2017-01-11 15:49:09,491 [XNIO-1 task-1] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 15:49:09,497 [XNIO-1 task-1] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 15:59:20,289 [Thread-2] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 15:59:20,298 [Thread-2] INFO  fb-bot.core - #'fb-bot.handler/init-app stopped 
+2017-01-11 16:08:15,714 [main] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider 
+2017-01-11 16:08:17,889 [main] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 16:08:18,417 [main] INFO  luminus.http-server - starting HTTP server on port 3000 
+2017-01-11 16:08:18,706 [main] INFO  org.xnio - XNIO version 3.3.6.Final 
+2017-01-11 16:08:19,278 [main] INFO  org.projectodd.wunderboss.web.Web - Registered web context / 
+2017-01-11 16:08:19,285 [main] INFO  luminus.repl-server - starting nREPL server on port 7000 
+2017-01-11 16:08:19,353 [main] INFO  fb-bot.core - #'fb-bot.config/env started 
+2017-01-11 16:08:19,354 [main] INFO  fb-bot.core - #'fb-bot.handler/init-app started 
+2017-01-11 16:08:19,356 [main] INFO  fb-bot.core - #'fb-bot.core/http-server started 
+2017-01-11 16:08:19,357 [main] INFO  fb-bot.core - #'fb-bot.core/repl-server started 
+2017-01-11 16:10:55,883 [Thread-2] INFO  luminus.repl-server - nREPL server stopped 
+2017-01-11 16:10:55,890 [Thread-2] DEBUG org.projectodd.wunderboss.WunderBoss - Returning existing component for org.projectodd.wunderboss.web.Web:-1645144552, ignoring options. 
+2017-01-11 16:10:55,903 [Thread-2] INFO  luminus.http-server - HTTP server stopped 
+2017-01-11 16:10:55,904 [Thread-2] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 16:10:55,905 [Thread-2] INFO  fb-bot.core - #'fb-bot.core/repl-server stopped 
+2017-01-11 16:10:55,907 [Thread-2] INFO  fb-bot.core - #'fb-bot.core/http-server stopped 
+2017-01-11 16:10:55,911 [Thread-2] INFO  fb-bot.core - #'fb-bot.handler/init-app stopped 
+2017-01-11 16:12:06,864 [main] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider 
+2017-01-11 16:12:09,309 [main] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 16:12:09,868 [main] INFO  luminus.http-server - starting HTTP server on port 3000 
+2017-01-11 16:12:10,154 [main] INFO  org.xnio - XNIO version 3.3.6.Final 
+2017-01-11 16:12:10,739 [main] INFO  org.projectodd.wunderboss.web.Web - Registered web context / 
+2017-01-11 16:12:10,746 [main] INFO  luminus.repl-server - starting nREPL server on port 7000 
+2017-01-11 16:12:10,787 [main] INFO  fb-bot.core - #'fb-bot.config/env started 
+2017-01-11 16:12:10,789 [main] INFO  fb-bot.core - #'fb-bot.handler/init-app started 
+2017-01-11 16:12:10,792 [main] INFO  fb-bot.core - #'fb-bot.core/http-server started 
+2017-01-11 16:12:10,793 [main] INFO  fb-bot.core - #'fb-bot.core/repl-server started 
+2017-01-11 16:22:30,856 [Thread-2] INFO  luminus.repl-server - nREPL server stopped 
+2017-01-11 16:22:30,862 [Thread-2] DEBUG org.projectodd.wunderboss.WunderBoss - Returning existing component for org.projectodd.wunderboss.web.Web:-1645144552, ignoring options. 
+2017-01-11 16:22:30,868 [Thread-2] INFO  luminus.http-server - HTTP server stopped 
+2017-01-11 16:22:30,874 [Thread-2] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 16:22:30,876 [Thread-2] INFO  fb-bot.core - #'fb-bot.core/repl-server stopped 
+2017-01-11 16:22:30,879 [Thread-2] INFO  fb-bot.core - #'fb-bot.core/http-server stopped 
+2017-01-11 16:22:30,881 [Thread-2] INFO  fb-bot.core - #'fb-bot.handler/init-app stopped 
+2017-01-11 16:31:38,415 [main] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider 
+2017-01-11 16:31:39,504 [main] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
+2017-01-11 16:31:40,124 [main] INFO  luminus.http-server - starting HTTP server on port 3000 
+2017-01-11 16:31:40,449 [main] INFO  org.xnio - XNIO version 3.3.6.Final 
+2017-01-11 16:31:41,056 [main] INFO  org.projectodd.wunderboss.web.Web - Registered web context / 
+2017-01-11 16:31:41,063 [main] INFO  luminus.repl-server - starting nREPL server on port 7000 
+2017-01-11 16:31:41,131 [main] INFO  fb-bot.core - #'fb-bot.config/env started 
+2017-01-11 16:31:41,133 [main] INFO  fb-bot.core - #'fb-bot.handler/init-app started 
+2017-01-11 16:31:41,134 [main] INFO  fb-bot.core - #'fb-bot.core/http-server started 
+2017-01-11 16:31:41,135 [main] INFO  fb-bot.core - #'fb-bot.core/repl-server started 
+2017-01-11 16:32:52,937 [XNIO-1 task-5] INFO  fb-bot.env - 
+-=[fb-bot has shut down successfully]=- 
+2017-01-11 16:32:52,943 [XNIO-1 task-5] INFO  fb-bot.env - 
+-=[fb-bot started successfully using the development profile]=- 
