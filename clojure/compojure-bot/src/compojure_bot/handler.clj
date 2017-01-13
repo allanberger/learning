@@ -1,9 +1,7 @@
 (ns compojure-bot.handler
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
-            [ring.middleware.json :refer [wrap-json-body]]
-            [ring.util.response :refer [response]]
-            [ring.middleware.params :refer [wrap-params]]
+            [ring.middleware.keyword-params :refer [wrap-keyword-params]]
             [compojure-bot.facebook :as fb]))
 
 (defroutes fb-routes
@@ -12,5 +10,5 @@
 
 (def app
   (-> fb-routes
-      (wrap-json-body {:keywords? true})
-      (wrap-params)))
+      (wrap-keyword-params)
+      (wrap-json-params)))

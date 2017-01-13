@@ -35,7 +35,7 @@
     [senderID (:text message)]))
 
 (defn route-request [request]
-  (def data (get-in request [:body]))
+  (def data (get-in request [:params]))
   (if (= (:object data) "page")
     (doseq [pageEntry (:entry data)]
       (doseq [messagingEvent (:messaging pageEntry)]
