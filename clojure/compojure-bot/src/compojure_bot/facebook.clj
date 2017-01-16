@@ -6,6 +6,7 @@
 
 (defn webhook-is-valid? [request]
   (def params (:params request))
+  (println "Incoming Webhook Request:")
   (println request)
   (if (= true (= (params "hub.mode") "subscribe")
         (= (params "hub.verify_token") (System/getenv "FB_PAGE_ACCESS_TOKEN")))
@@ -19,7 +20,7 @@
                          :headers {"Content-Type" "application/json"}
                          :body (json/write-str messageData)
                          :insecure? true}))
-        (println "Response:")
+        (println "Response to FB:")
         (println @response)
         (catch Exception e (str "caught exception: " (.getMessage e)))))
 
@@ -36,6 +37,8 @@
 
 (defn route-request [request]
   (def data (get-in request [:params]))
+  (println "Incoming Request:")
+  (println request)
   (if (= (:object data) "page")
     (doseq [pageEntry (:entry data)]
       (doseq [messagingEvent (:messaging pageEntry)]
