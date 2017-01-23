@@ -12,15 +12,26 @@
       {:status 200 :body (params "hub.challenge")}
       {:status 403})))
 
-(defn onMessage [event]
+; Process Received Message Event by Facebook
+(defn receivedMessage [event]
+  (println "Messaging Event:")
+  (println event)
   (let [senderID (get-in event [:sender :id]) recipientID (get-in event [:recipient :id]) timeOfMessage (get-in event [:timestamp]) message (get-in event [:message])]
     (println (str "Received message for user " senderID " and page " recipientID " at " timeOfMessage " with message:"))
     (println message)
-    ; Add rules here
+    ; TODO: Check for text (onText ?), attachments (onAttachments ?)
+    ; or quick_reply (onQuickReply) in :message tree here
+    ; TODO: Simplify function to send a message vs.
+    ; (msg/sendTextMessage (receivedMessage messagingEvent))
     (cond
-      (s/includes? (s/lower-case (:text message)) "help") [senderID "Hi there, happy to help :)"]
-      (s/includes? (s/lower-case (:text message)) "image") [senderID "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/M101_hires_STScI-PRC2006-10a.jpg/1280px-M101_hires_STScI-PRC2006-10a.jpg"]
-      :else [senderID (:text message)])))
+      ; Check for :text
+      ; TODO: move to separate handler
+      (s/includes? (s/lower-case (:text message)) "help") (msg/sendTextMessage [senderID "Hi there, happy to help :)"])
+      (s/includes? (s/lower-case (:text message)) "image") (msg/sendImageMessage [senderID "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/M101_hires_STScI-PRC2006-10a.jpg/1280px-M101_hires_STScI-PRC2006-10a.jpg"])
+      ; Check for :attachments
+      (contains? message :attachments) (msg/sendTextMessage [senderID "Message with attachment received"])
+      ; If no rules apply echo the user's text input
+      :else (msg/sendTextMessage [senderID (:text message)]))))
 
 (defn route-request [request]
   (let [data (get-in request [:params])]
@@ -29,6 +40,7 @@
     (when (= (:object data) "page")
       (doseq [pageEntry (:entry data)]
         (doseq [messagingEvent (:messaging pageEntry)]
-          ; Check for text or attachments here
-          (cond (contains? messagingEvent :message) (msg/sendTextMessage (onMessage messagingEvent))
-            :else (println (str "Webhook received unknown messagingEvent: " messagingEvent))))))))
+          ; Check for message (onMessage) or postback (onPostback) here
+          (cond (contains? messagingEvent :message) (receivedMessage messagingEvent)
+                (contains? messagingEvent :postback) (msg/sendTextMessage (receivedMessage messagingEvent))
+                :else (println (str "Webhook received unknown messagingEvent: " messagingEvent))))))))
