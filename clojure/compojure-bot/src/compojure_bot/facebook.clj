@@ -12,6 +12,13 @@
       {:status 200 :body (params "hub.challenge")}
       {:status 403})))
 
+(defn processText [senderID text]
+  (cond
+    (s/includes? (s/lower-case text) "help") (msg/sendTextMessage [senderID "Hi there, happy to help :)"])
+    (s/includes? (s/lower-case text) "image") (msg/sendImageMessage [senderID "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/M101_hires_STScI-PRC2006-10a.jpg/1280px-M101_hires_STScI-PRC2006-10a.jpg"])
+    ; If no rules apply echo the user's text input
+    :else (msg/sendTextMessage [senderID text])))
+
 ; Process Received Message Event by Facebook
 (defn receivedMessage [event]
   (println "Messaging Event:")
@@ -23,15 +30,12 @@
     ; or quick_reply (onQuickReply) in :message tree here
     ; TODO: Simplify function to send a message vs.
     ; (msg/sendTextMessage (receivedMessage messagingEvent))
-    (cond
-      ; Check for :text
-      ; TODO: move to separate handler
-      (s/includes? (s/lower-case (:text message)) "help") (msg/sendTextMessage [senderID "Hi there, happy to help :)"])
-      (s/includes? (s/lower-case (:text message)) "image") (msg/sendImageMessage [senderID "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/M101_hires_STScI-PRC2006-10a.jpg/1280px-M101_hires_STScI-PRC2006-10a.jpg"])
-      ; Check for :attachments
-      (contains? message :attachments) (msg/sendTextMessage [senderID "Message with attachment received"])
-      ; If no rules apply echo the user's text input
-      :else (msg/sendTextMessage [senderID (:text message)]))))
+    (let [messageText (message :text)]
+      (cond
+        ; Check for :text
+        (contains? message :text) (processText senderID messageText)
+        ; Check for :attachments
+        (contains? message :attachments) (msg/sendTextMessage [senderID "Message with attachment received"])))))
 
 (defn route-request [request]
   (let [data (get-in request [:params])]
