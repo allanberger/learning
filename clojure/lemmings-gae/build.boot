@@ -1,5 +1,5 @@
 (set-env!
- :gae {:app-id "msch-clojure"
+ :gae {:app-id "aeb-clojure"
        :version "stable"
        :module {:name "default"}}
  :build-dir "target"
@@ -71,7 +71,7 @@
   "run locally"
   []
   (comp (build :prod false)
-        (gae/run)))
+        (gae/run :http-address "0.0.0.0")))
 
 (deftask monitor
   "watch etc. for gae project"
