@@ -16,6 +16,7 @@
   (cond
     (s/includes? (s/lower-case text) "help") (msg/sendTextMessage [senderID "Hi there, happy to help :)"])
     (s/includes? (s/lower-case text) "image") (msg/sendImageMessage [senderID "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/M101_hires_STScI-PRC2006-10a.jpg/1280px-M101_hires_STScI-PRC2006-10a.jpg"])
+    (s/includes? (s/lower-case text) "quick reply") (msg/sendQuickReply [senderID])
     ; If no rules apply echo the user's text input
     :else (msg/sendTextMessage [senderID text])))
 
