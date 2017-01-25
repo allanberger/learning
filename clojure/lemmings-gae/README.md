@@ -2,14 +2,13 @@
 
 > Through application of specific skills at the right time and in coordination with others is it possible to reach that which seems impossible at first.
 
-```shell
-# Install boot on macOS
-brew install boot-clj
+## Install [boot](https://github.com/boot-clj/boot) on the Vagrant VM:
+`sudo bash -c "cd /usr/local/bin && curl -fsSLo boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh && chmod 755 boot"`
 
-# run locally on http://localhost:8080
-# will download App Engine SDK the first time, just give it as much time as it takes.
-bin/server
+## Start the local Google App Engine Dev Server
+This will download the App Engine SDK and several dependencies the first time. Grab a cup of tea :)  
+Run: `bin/server`
 
-# Deploy it on app engine. Make sure the `:app-id` in build.boot is correct
-bin/deploy
-```
+## Deploy it to Google App Engine
+Make sure the `:app-id` in build.boot is correct  
+Run: `bin/deploy`
