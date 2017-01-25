@@ -1,0 +1,6 @@
+{:thread-safe true
+ :system-properties {:logging {:jul {:name "java.util.logging.config.file"
+                                     :value "WEB-INF/logging.properties"}}}
+ :ssl true
+ :inbound-services [{:service :warmup}]
+ :precompilation true}

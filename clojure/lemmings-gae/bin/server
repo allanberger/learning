@@ -1,0 +1,44 @@
+#!/bin/bash
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ROOT_DIR="${SCRIPT_DIR%/*}"
+BOOT="${ROOT_DIR}/boot.sh"
+
+kill_processes() {
+  local pid=$1
+  if [ ! -z "$pid" ]; then
+    echo kill $pid
+    # process might be gone already
+    kill $pid &> /dev/null || true
+  fi
+}
+
+list_descendants ()
+{
+  local children=$(pgrep -P "$1")
+
+  for pid in $children
+  do
+    list_descendants "$pid"
+  done
+
+  echo "$children"
+}
+
+shutdown() {
+  kill $(list_descendants $$)
+
+  exit 0
+}
+
+rm -rf "${ROOT_DIR}/target"
+
+trap shutdown INT TERM
+
+$BOOT run &
+until curl -s http://127.0.0.1:8080/> /dev/null || (( count++ >= 90 )); do sleep 1; done
+curl -s http://127.0.0.1:8080/ > /dev/null || { echo "Server not up within 90 seconds"; exit 1; }
+
+$BOOT monitor &
+
+# http://stackoverflow.com/questions/2935183/bash-infinite-sleep-infinite-blocking#comment44880424_22100106
+while true; do sleep 86400; done
