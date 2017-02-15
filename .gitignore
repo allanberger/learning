@@ -1,2 +1,4 @@
 # Vagrant stuff
 .vagrant
+clojure/lemmings-gae/*
+clojure/rss-bot/*
