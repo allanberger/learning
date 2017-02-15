@@ -1,4 +1,7 @@
-# Vagrant stuff
+# Vagrant
 .vagrant
+ngrok.yml
+
+# Projects
 clojure/lemmings-gae/*
 clojure/rss-bot/*
