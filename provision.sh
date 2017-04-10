@@ -38,6 +38,13 @@ ngrok () {
   chown -R vagrant:vagrant /home/vagrant/.ngrok2
 }
 
+postgresql () {
+  apt-get install -y postgresql
+  sudo su postgres -c "psql -c \"CREATE ROLE vagrant SUPERUSER LOGIN PASSWORD 'vagrant'\" " || echo "Role vagrant does exist"
+  sudo su postgres -c "createdb -E UTF8 -T template0 --locale=en_US.utf8 -O vagrant vagrant" || echo "Database vagrant does exist"
+  sudo su postgres -c "createdb -E UTF8 -T template0 --locale=en_US.utf8 -O vagrant rssbot" || echo "Database rssbot does exist"
+}
+
 main () {
     echo "PROVISIONING"
 
@@ -66,5 +73,7 @@ main () {
     clojure
     heroku
     ngrok
+    postgresql
 }
+
 main
